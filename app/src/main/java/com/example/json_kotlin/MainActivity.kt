@@ -6,6 +6,9 @@ import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var image: ImageView
@@ -15,6 +18,21 @@ class MainActivity : AppCompatActivity() {
 
         playing()
         loadImage()
+        fetchAllData()
+    }
+
+    private fun fetchAllData() {
+        ApiClient.apiClient.getMoviesTopRated(ApiKey.apiKeyMovieDB)
+            .enqueue(object : Callback<TopMovie>{
+                override fun onResponse(call: Call<TopMovie>, response: Response<TopMovie>) {
+                    Log.d("COBAIN", response.toString())
+                }
+
+
+                override fun onFailure(call: Call<TopMovie>, t: Throwable) {
+                    Log.d("YACOBA", t.message.toString())
+                }
+            })
     }
 
     private fun loadImage(){
