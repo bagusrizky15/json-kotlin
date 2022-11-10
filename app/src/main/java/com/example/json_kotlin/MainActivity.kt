@@ -31,8 +31,7 @@ class MainActivity : AppCompatActivity() {
                     Log.d("COBAIN", response.toString())
                     Log.e("COBAIN", Gson().toJson(listMovie?.get(0)))
                 }
-
-
+                
                 override fun onFailure(call: Call<TopMovie>, t: Throwable) {
                     Log.d("YACOBA", t.message.toString())
                 }
