@@ -5,7 +5,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 object ApiClient {
     const val BASE_URL = "https://api.themoviedb.org/3/"
@@ -24,5 +23,5 @@ object ApiClient {
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(httpClient.build())
         .build()
-        .create()
+        .create(ApiService::class.java)
 }

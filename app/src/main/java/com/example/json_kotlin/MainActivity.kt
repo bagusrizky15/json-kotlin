@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         ApiClient.apiClient.getMoviesTopRated(ApiKey.apiKeyMovieDB)
             .enqueue(object : Callback<TopMovie>{
                 override fun onResponse(call: Call<TopMovie>, response: Response<TopMovie>) {
+                    val movie = response.body()
+                    val listMovie = movie?.results
                     Log.d("COBAIN", response.toString())
+                    Log.e("COBAIN", Gson().toJson(listMovie?.get(0)))
                 }
 
 

@@ -4,7 +4,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface Movies {
+interface ApiService {
         @GET("/movie/top_rated")
         fun getMoviesTopRated(@Query("api_key")apiKey: String) : Call<TopMovie>
     }
