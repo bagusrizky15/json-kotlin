@@ -1,5 +1,6 @@
 package com.example.json_kotlin.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import com.example.json_kotlin.databinding.ItemMoviesBinding
 import com.example.json_kotlin.model.ResponseModel
 import okhttp3.internal.notify
 
-class MovieAdapter (val data: ArrayList<ResponseModel.Movies>) :
+class MovieAdapter (val data: ArrayList<ResponseModel.Movies>, val context: Context) :
     RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
         val binding = ItemMoviesBinding.bind(view)

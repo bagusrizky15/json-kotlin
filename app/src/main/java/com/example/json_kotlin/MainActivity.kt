@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.json_kotlin.adapter.MovieAdapter
 import com.example.json_kotlin.api.ApiClient
 import com.example.json_kotlin.api.ApiKey
+import com.example.json_kotlin.databinding.ActivityMainBinding
+import com.example.json_kotlin.databinding.ItemMoviesBinding
 import com.example.json_kotlin.json.TopMovie
+import com.example.json_kotlin.model.ResponseModel
 import com.google.gson.Gson
 import org.json.JSONObject
 import retrofit2.Call
@@ -16,11 +21,18 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var image: ImageView
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: MovieAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        playing()
+        adapter = MovieAdapter(arrayListOf(), this@MainActivity )
+        binding.recycleView.layoutManager = LinearLayoutManager(this)
+        binding.recycleView.adapter = adapter
+
+        //playing()
         loadImage()
         fetchAllData()
     }
@@ -29,16 +41,26 @@ class MainActivity : AppCompatActivity() {
         ApiClient.apiClient.getMoviesTopRated(ApiKey.apiKeyMovieDB)
             .enqueue(object : Callback<TopMovie>{
                 override fun onResponse(call: Call<TopMovie>, response: Response<TopMovie>) {
-                    val movie = response.body()
-                    val listMovie = movie?.results
-                    Log.d("COBAIN", response.toString())
-                    Log.e("COBAIN", Gson().toJson(listMovie?.get(0)))
+
+//                    Log.d("COBAIN", response.toString())
+//                    Log.e("COBAIN", Gson().toJson(listMovie?.get(0)))
+                    if (response.isSuccessful){
+                        val data = response.body()
+                        val listMovie = data?.results
+                        if (data != null){
+                            setData(listMovie.data)
+                        }
+                    }
                 }
 
                 override fun onFailure(call: Call<TopMovie>, t: Throwable) {
-                    Log.d("YACOBA", t.message.toString())
+                   // Log.d("YACOBA", t.message.toString())
                 }
             })
+    }
+
+    private fun setData(data: ArrayList<ResponseModel.Movies>){
+        adapter.setData(data)
     }
 
     private fun loadImage(){
