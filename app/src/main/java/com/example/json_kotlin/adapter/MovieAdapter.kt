@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.json_kotlin.R
 import com.example.json_kotlin.databinding.ItemMoviesBinding
+import com.example.json_kotlin.json.Result
 import com.example.json_kotlin.model.ResponseModel
 import okhttp3.internal.notify
 
@@ -32,7 +33,7 @@ class MovieAdapter (val data: ArrayList<ResponseModel.Movies>, val context: Cont
 
     override fun getItemCount(): Int = data.size
 
-    fun setData(data: ArrayList<ResponseModel.Movies>){
+    fun setData(data: List<Result?>?){
         data.clear()
         data.addAll(data)
         notifyDataSetChanged()

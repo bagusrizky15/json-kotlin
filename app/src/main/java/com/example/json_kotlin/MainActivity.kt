@@ -10,10 +10,8 @@ import com.example.json_kotlin.adapter.MovieAdapter
 import com.example.json_kotlin.api.ApiClient
 import com.example.json_kotlin.api.ApiKey
 import com.example.json_kotlin.databinding.ActivityMainBinding
-import com.example.json_kotlin.databinding.ItemMoviesBinding
 import com.example.json_kotlin.json.TopMovie
 import com.example.json_kotlin.model.ResponseModel
-import com.google.gson.Gson
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,16 +39,11 @@ class MainActivity : AppCompatActivity() {
         ApiClient.apiClient.getMoviesTopRated(ApiKey.apiKeyMovieDB)
             .enqueue(object : Callback<TopMovie>{
                 override fun onResponse(call: Call<TopMovie>, response: Response<TopMovie>) {
-
+                    val movie = response.body()
+                    val listMovie = movie?.results
 //                    Log.d("COBAIN", response.toString())
 //                    Log.e("COBAIN", Gson().toJson(listMovie?.get(0)))
-                    if (response.isSuccessful){
-                        val data = response.body()
-                        val listMovie = data?.results
-                        if (data != null){
-                            setData(listMovie.data)
-                        }
-                    }
+                    adapter.setData(listMovie)
                 }
 
                 override fun onFailure(call: Call<TopMovie>, t: Throwable) {
@@ -59,8 +52,8 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
-    private fun setData(data: ArrayList<ResponseModel.Movies>){
-        adapter.setData(data)
+    private fun setData(movie: ArrayList<ResponseModel.Movies>){
+        adapter.setData(movie)
     }
 
     private fun loadImage(){
