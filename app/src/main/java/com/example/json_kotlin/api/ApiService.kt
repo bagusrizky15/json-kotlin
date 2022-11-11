@@ -1,6 +1,6 @@
 package com.example.json_kotlin.api
 
-import com.example.json_kotlin.json.TopMovie
+import com.example.json_kotlin.model.TopMovie
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

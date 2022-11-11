@@ -1,42 +1,25 @@
 package com.example.json_kotlin.adapter
 
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.json_kotlin.R
-import com.example.json_kotlin.databinding.ItemMoviesBinding
-import com.example.json_kotlin.json.Result
-import com.example.json_kotlin.model.ResponseModel
-import okhttp3.internal.notify
+import com.example.json_kotlin.model.TopMovie
 
-class MovieAdapter (val data: ArrayList<ResponseModel.Movies>, val context: Context) :
-    RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-    class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
-        val binding = ItemMoviesBinding.bind(view)
-        val tvTitle = binding.tvTitle
-        val tvDesc = binding.tvDesc
+class MovieAdapter(val movies: ArrayList<TopMovie>) :
+    RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
+    class MovieViewHolder {
+        
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_movies, parent, false)
-        return ViewHolder(itemView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        TODO("Not yet implemented")
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvTitle.text = data[position].title
-        holder.tvDesc.text = data[position].overview
-
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        TODO("Not yet implemented")
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = movies.size
 
-    fun setData(data: List<Result?>?){
-        data.clear()
-        data.addAll(data)
-        notifyDataSetChanged()
-    }
 
 }
