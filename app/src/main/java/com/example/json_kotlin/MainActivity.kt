@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.example.json_kotlin.api.ApiClient
+import com.example.json_kotlin.api.ApiKey
+import com.example.json_kotlin.json.TopMovie
 import com.google.gson.Gson
 import org.json.JSONObject
 import retrofit2.Call

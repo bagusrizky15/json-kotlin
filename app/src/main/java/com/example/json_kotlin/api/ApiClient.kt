@@ -1,4 +1,4 @@
-package com.example.json_kotlin
+package com.example.json_kotlin.api
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

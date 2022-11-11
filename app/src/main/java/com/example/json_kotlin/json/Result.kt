@@ -1,4 +1,4 @@
-package com.example.json_kotlin
+package com.example.json_kotlin.json
 
 data class Result(
     var adult: Boolean?,
