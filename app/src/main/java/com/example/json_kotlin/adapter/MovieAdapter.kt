@@ -11,7 +11,7 @@ class MovieAdapter(val results: ArrayList<TopMovie.Result>) : RecyclerView.Adapt
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
-        LayoutInflater.from(parent.context).inflate(R.layout.activity_main, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.item_movies, parent, false)
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
