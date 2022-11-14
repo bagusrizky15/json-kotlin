@@ -7,7 +7,7 @@ import com.example.json_kotlin.model.TopMovie
 class MovieAdapter(val movies: ArrayList<TopMovie>) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
     class MovieViewHolder {
-        
+
 
     }
 
