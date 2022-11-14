@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.json_kotlin.R
 import com.example.json_kotlin.model.TopMovie
 
-class MovieAdapter(val results: ArrayList<TopMovie.Result>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(val results: ArrayList<TopMovie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     class ViewHolder (val view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
@@ -15,10 +15,9 @@ class MovieAdapter(val results: ArrayList<TopMovie.Result>) : RecyclerView.Adapt
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.itemView
     }
 
     override fun getItemCount() = results.size
-    }
 
 }
