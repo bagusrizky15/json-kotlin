@@ -5,4 +5,10 @@ data class TopMovie(
     var results: ArrayList<Result?>?,
     var total_pages: Int?,
     var total_results: Int?
-)
+){
+    data class Result (
+        var id: Int?,
+        var title: String?,
+        var overview: String?
+        )
+}

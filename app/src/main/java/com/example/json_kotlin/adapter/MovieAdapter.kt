@@ -1,25 +1,24 @@
 package com.example.json_kotlin.adapter
 
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.json_kotlin.R
 import com.example.json_kotlin.model.TopMovie
 
-class MovieAdapter(val movies: ArrayList<TopMovie>) :
-    RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(){
-    class MovieViewHolder {
+class MovieAdapter(val results: ArrayList<TopMovie.Result>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+    class ViewHolder (val view: View) : RecyclerView.ViewHolder(view)
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
+        LayoutInflater.from(parent.context).inflate(R.layout.activity_main, parent, false)
+    )
 
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         TODO("Not yet implemented")
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+    override fun getItemCount() = results.size
     }
-
-    override fun getItemCount(): Int = movies.size
-
 
 }
