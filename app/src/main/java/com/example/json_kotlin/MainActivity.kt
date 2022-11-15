@@ -2,6 +2,7 @@ package com.example.json_kotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.json_kotlin.adapter.MovieAdapter
 import com.example.json_kotlin.api.ApiClient
@@ -9,6 +10,7 @@ import com.example.json_kotlin.api.ApiKey
 import com.example.json_kotlin.databinding.ActivityMainBinding
 import com.example.json_kotlin.model.TopMovie
 import com.example.json_kotlin.model.TopMovieResponse
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,12 +36,13 @@ class MainActivity : AppCompatActivity() {
                     val movie = response.body()
                     val listMovie = movie?.results
                     setData(listMovie)
-//                    Log.d("COBAIN", response.toString())
-//                    Log.e("COBAIN", Gson().toJson(listMovie?.get(0)))
+                    Log.d("COBAIN", response.toString())
+                    Log.e("COBAIN", Gson().toJson(listMovie?.get(0)))
                 }
 
                 override fun onFailure(call: Call<TopMovieResponse>, t: Throwable) {
-                   // Log.d("YACOBA", t.message.toString())
+                    Log.d("YACOBA", t.message.toString())
+                    Log.d("Error Get", ""+t.stackTraceToString())
                 }
             })
     }
