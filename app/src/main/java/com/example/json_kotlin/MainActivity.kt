@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                     val listMovie = movie?.results
                     setData(listMovie)
                     Log.d("COBAIN", response.toString())
-                    Log.e("COBAIN", Gson().toJson(listMovie?.get(0)))
+                    Log.e("COBAIN", Gson().toJson(movie))
                 }
 
                 override fun onFailure(call: Call<TopMovieResponse>, t: Throwable) {
