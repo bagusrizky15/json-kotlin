@@ -29,12 +29,8 @@ class MovieAdapter(val result: ArrayList<TopMovie>, val context: Context
     override fun getItemCount() = result.size
 
     fun setData(result: ArrayList<TopMovie>?){
-        result?.clear()
+       // result?.clear()
         result?.addAll(result)
-        notifyDataSetChanged()
     }
-
-
-
 
 }

@@ -35,7 +35,10 @@ class MainActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<TopMovieResponse>, response: Response<TopMovieResponse>) {
                     val movie = response.body()
                     val listMovie = movie?.results
-                    setData(listMovie)
+                    adapter = listMovie?.let { MovieAdapter(it, this@MainActivity) }!!
+                    binding.recycleView.layoutManager = LinearLayoutManager(this@MainActivity)
+                    binding.recycleView.adapter = adapter
+                    //setData(listMovie)
                     Log.d("COBAIN", response.toString())
                     Log.e("COBAIN", Gson().toJson(listMovie))
                 }
@@ -49,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setData(result: ArrayList<TopMovie>?) {
         adapter.setData(result)
+        adapter.notifyDataSetChanged()
     }
 
 }
