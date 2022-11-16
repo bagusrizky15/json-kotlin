@@ -19,7 +19,8 @@ object ApiClient {
         .setLenient()
         .create()
 
-    var apiClient = Retrofit.Builder().baseUrl(BASE_URL)
+    var apiClient = Retrofit.Builder()
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .client(httpClient.build())
         .build()
