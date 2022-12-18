@@ -1,5 +1,6 @@
 package com.example.json_kotlin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import com.example.json_kotlin.api.ApiKey
 import com.example.json_kotlin.databinding.ActivityMainBinding
 import com.example.json_kotlin.model.TopMovie
 import com.example.json_kotlin.model.TopMovieResponse
+import com.example.json_kotlin.ui.ProfileActivity
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnUser.setOnClickListener{
+            val i = Intent(this, ProfileActivity::class.java)
+            startActivity(i)
+        }
 
         adapter = MovieAdapter(arrayListOf(), this@MainActivity)
         binding.recycleView.layoutManager = LinearLayoutManager(this)

@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.json_kotlin.MainActivity
-import com.example.json_kotlin.R
 import com.example.json_kotlin.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -20,8 +19,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnDaftar.setOnClickListener{
-            val i = Intent(this, RegisterActivity::class.java)
-            startActivity(i)
+            val j = Intent(this, RegisterActivity::class.java)
+            startActivity(j)
         }
     }
 }

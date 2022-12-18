@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.RegisterActivity">
-
-
+    
     <TextView
         android:id="@+id/tvRegister"
         android:layout_marginTop="200dp"
@@ -22,9 +21,18 @@
         android:layout_marginTop="100dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Masukan Email"
+        android:hint="Masukan Username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tvUsername"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Masukan Email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvUsername"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/tvEmail"/>
 
@@ -37,28 +45,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/tvPassword"/>
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Masukan Konfirmasi Password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/tvKonfirmasiPassword"/>
+
     <Button
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPassword"
+        app:layout_constraintTop_toBottomOf="@id/tvKonfirmasiPassword"
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/btnDaftar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Daftar Akun"/>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
