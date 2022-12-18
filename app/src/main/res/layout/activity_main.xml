@@ -8,6 +8,7 @@
     android:padding="20dp">
 
     <TextView
+        android:id="@+id/tvUsername"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

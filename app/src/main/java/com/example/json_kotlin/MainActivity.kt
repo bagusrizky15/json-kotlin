@@ -1,5 +1,6 @@
 package com.example.json_kotlin
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,8 @@ import com.example.json_kotlin.adapter.MovieAdapter
 import com.example.json_kotlin.api.ApiClient
 import com.example.json_kotlin.api.ApiKey
 import com.example.json_kotlin.databinding.ActivityMainBinding
+import com.example.json_kotlin.helper.Constant
+import com.example.json_kotlin.helper.PreferenceHelper
 import com.example.json_kotlin.model.TopMovie
 import com.example.json_kotlin.model.TopMovieResponse
 import com.example.json_kotlin.ui.ProfileActivity
@@ -20,10 +23,15 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: MovieAdapter
+    lateinit var sharedPreferences : PreferenceHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val welcome = "Welcome, "
+        sharedPreferences = PreferenceHelper(this)
+        binding.tvUsername.text = welcome + sharedPreferences.getString(Constant.PREF_EMAIL)
 
         binding.btnUser.setOnClickListener{
             val i = Intent(this, ProfileActivity::class.java)
