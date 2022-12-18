@@ -18,5 +18,10 @@ class LoginActivity : AppCompatActivity() {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
+
+        binding.btnDaftar.setOnClickListener{
+            val i = Intent(this, RegisterActivity::class.java)
+            startActivity(i)
+        }
     }
 }
