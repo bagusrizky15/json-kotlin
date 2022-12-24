@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: MovieAdapter
     lateinit var sharedPreferences : PreferenceHelper
 
+    companion object {
+        val INTENT_PARCELABLE = "OBJECT INTENT"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,6 +45,9 @@ class MainActivity : AppCompatActivity() {
         adapter = MovieAdapter(arrayListOf(), this@MainActivity)
         binding.recycleView.layoutManager = LinearLayoutManager(this)
         binding.recycleView.adapter = adapter
+        binding.recycleView.adapter = MovieAdapter(this, ){
+
+        }
         fetchAllData()
     }
 
