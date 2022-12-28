@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "5060616774",
+    "project_id": "appmoviesynergyacademy",
+    "storage_bucket": "appmoviesynergyacademy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5060616774:android:f5c3fd88c51189c114e047",
+        "android_client_info": {
+          "package_name": "com.example.json_kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5060616774-rk1m5nmlq3b3i2gfk5imjmb19kep3sne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB03gxs59--K-wWQp-8VD-At7PmLvx-SFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5060616774-rk1m5nmlq3b3i2gfk5imjmb19kep3sne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
