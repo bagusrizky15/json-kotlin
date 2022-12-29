@@ -33,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var data = intent.extras
+        
+
         val welcome = "Welcome, "
         sharedPreferences = PreferenceHelper(this)
         binding.tvUsername.text = welcome + sharedPreferences.getString(Constant.PREF_EMAIL)
@@ -45,9 +48,6 @@ class MainActivity : AppCompatActivity() {
         adapter = MovieAdapter(arrayListOf(), this@MainActivity)
         binding.recycleView.layoutManager = LinearLayoutManager(this)
         binding.recycleView.adapter = adapter
-        binding.recycleView.adapter = MovieAdapter(this, ){
-
-        }
         fetchAllData()
     }
 

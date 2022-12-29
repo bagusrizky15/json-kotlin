@@ -1,31 +1,49 @@
 package com.example.json_kotlin.ui
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import com.example.json_kotlin.MainActivity
 import com.example.json_kotlin.databinding.ActivityRegisterBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
-    private lateinit var sharedPreferences: SharedPreferences
-    private val sharedPrefName = "sharefPrefBagus"
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPreferences = this.getSharedPreferences(sharedPrefName, MODE_PRIVATE)
+        auth = Firebase.auth
         binding.btnRegister.setOnClickListener{
-            val username = binding.tvUsername.text.toString()
-            val email = binding.tvEmail.text.toString()
-            val password = binding.tvPassword.text.toString()
-            val editor = sharedPreferences.edit()
-            editor.putString("username_key", username)
-            editor.putString("email_key", email)
-            editor.putString("password_key", password)
-            editor.apply()
-            Toast.makeText(this, "Data Tersimpan", Toast.LENGTH_SHORT).show()
+            auth.createUserWithEmailAndPassword(binding.tvEmail.toString(), binding.tvPassword.toString())
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d("TAG", "createUserWithEmail:success")
+                        val user = auth.currentUser
+                        updateUI(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w("TAG", "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(baseContext, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show()
+                        updateUI(null)
+                    }
+                }
         }
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        startActivity(Intent(this,MainActivity::class.java))
+        finish()
     }
 }
