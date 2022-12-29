@@ -52,7 +52,8 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser!= null){
-            reload()
+            updateUI(currentUser)
+            Toast.makeText(this, "Already logged in ", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -69,17 +70,6 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         startActivity(Intent(this, MainActivity::class.java))
         intent.putExtra("data", user)
-        finish()
-    }
-
-
-
-    private fun reload() {
-        TODO("Not yet implemented")
-    }
-
-    private fun moveIntent() {
-        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 

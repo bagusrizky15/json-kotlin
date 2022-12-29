@@ -1,8 +1,6 @@
 package com.example.json_kotlin.ui
 
-import android.content.ContentValues.TAG
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -43,7 +41,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 }

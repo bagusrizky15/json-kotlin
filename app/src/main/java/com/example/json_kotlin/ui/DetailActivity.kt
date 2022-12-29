@@ -16,12 +16,5 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val movie = intent.getParcelableExtra<TopMovie>(MainActivity.INTENT_PARCELABLE)
-
-        if (movie != null) {
-            binding.tvTitle.text = movie.title
-            binding.tvDesc.text = movie.overview
-        }
     }
 }
