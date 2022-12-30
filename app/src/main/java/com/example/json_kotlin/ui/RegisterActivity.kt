@@ -22,7 +22,9 @@ class RegisterActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         binding.btnRegister.setOnClickListener{
-            auth.createUserWithEmailAndPassword(binding.tvEmail.toString(), binding.tvPassword.toString())
+            val sEmail = binding.tvEmail.toString().trim()
+            val sPassword = binding.tvPassword.toString().trim()
+            auth.createUserWithEmailAndPassword(sEmail, sPassword)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
@@ -34,7 +36,6 @@ class RegisterActivity : AppCompatActivity() {
                         Log.w("TAG", "createUserWithEmail:failure", task.exception)
                         Toast.makeText(baseContext, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()
-                        updateUI(null)
                     }
                 }
         }
@@ -42,6 +43,5 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         startActivity(Intent(this, MainActivity::class.java))
-        finish()
     }
 }
