@@ -7,8 +7,6 @@ import android.util.Log
 import android.widget.Toast
 import com.example.json_kotlin.MainActivity
 import com.example.json_kotlin.databinding.ActivityLoginBinding
-import com.example.json_kotlin.helper.Constant
-import com.example.json_kotlin.helper.PreferenceHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -25,8 +23,7 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.btnDaftar.setOnClickListener{
-            val j = Intent(this, RegisterActivity::class.java)
-            startActivity(j)
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
         binding.btnLogin.setOnClickListener{
