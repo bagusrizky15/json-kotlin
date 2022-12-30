@@ -16,7 +16,7 @@ import com.google.firebase.ktx.Firebase
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var semail: EditText
+    private lateinit var sEmail: EditText
     private lateinit var sPassword: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +25,9 @@ class RegisterActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         binding.btnRegister.setOnClickListener{
-            val sEmail = binding.tvEmail.toString().trim()
-            val sPassword = binding.tvPassword.toString().trim()
-            auth.createUserWithEmailAndPassword(sEmail, sPassword)
+            sEmail = binding.tvEmail
+            sPassword = binding.tvPassword
+            auth.createUserWithEmailAndPassword(sEmail.toString().trim(), sPassword.toString().trim())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
