@@ -8,4 +8,5 @@ import retrofit2.http.Query
 interface ApiService {
         @GET("movie/top_rated")
         fun getMoviesTopRated(@Query("api_key")apiKey: String) : Call<TopMovieResponse>
-    }
+    abstract fun getMoviesTopRated(): Call<TopMovieResponse>
+}
